@@ -79,3 +79,4 @@ testem.log
 /backend/.DS_Store
 /backend/Thumbs.db
 
+.idea
