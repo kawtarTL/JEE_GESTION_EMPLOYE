@@ -1,0 +1,38 @@
+<div class="space-y-7">
+  <app-header></app-header>
+  <div class="mx-auto pt-[115px] md:pt-[71px]">
+    <div class="max-w-7xl mx-auto lg:flex sticky top-[141px] md:top-[97px] bg-white" *ngIf="authService.userToken">
+      <span class="px-2 cursor-default h-8 pt-1">Options ></span>
+      <ul class="peer-hover:transition-colors duration-100 ss:flex w-6/7 text-md text-slate-500 border-slate-800 ss:divide-x-2 divide-slate-700 ss:px-3">
+<!--        <a routerLink="employees" routerLinkActive="bg-slate-500 text-white">-->
+<!--          <li class="hover:bg-slate-500 hover:text-slate-50 px-4">-->
+<!--            <ng-icon size="25" name="heroUsers" class="pt-1 mr-1"></ng-icon>-->
+<!--            Les employés-->
+<!--          </li >-->
+<!--        </a>-->
+
+        <a routerLink="employees/add" routerLinkActive="bg-slate-500 text-white">
+          <li class="hover:bg-slate-500 hover:text-slate-50 px-4">
+            <ng-icon size="25" name="heroUserPlus" class="pt-1 mr-1"></ng-icon>
+            Ajouter employé
+          </li>
+        </a>
+
+        <a routerLink="departments" routerLinkActive="bg-slate-500 text-white">
+          <li class="hover:bg-slate-500 hover:text-slate-50 px-4">
+            <ng-icon size="25" name="heroBuildingOffice" class="pt-1 mr-1"></ng-icon>
+            Départements
+          </li>
+        </a>
+      </ul>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!--footer-->
+<footer class="w-full bottom-0 h-20 bg-slate-800 grid grid-cols-3 divide-x-4 items-center mt-[200px]">
+  <div class="flex justify-center text-2xl font-bold italic text-slate-300">GESEMP</div>
+  <div class="flex justify-center text-md text-slate-300">Corp</div>
+  <div class="flex justify-center text-md text-slate-300 block">All rights reserved <span class="text-2xl">®</span> </div>
+</footer>

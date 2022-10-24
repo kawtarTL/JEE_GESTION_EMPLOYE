@@ -1,0 +1,35 @@
+<div class="flex h-14 shadow-lg shadow-slate-400 bg-slate-500 items-center justify-center sticky top-[173px] md:top-[113px]">
+  <span class="text-2xl font-bold text-slate-800 cursor-default">
+    <ng-icon  name="heroBuildingOffice" class="pt-1"></ng-icon>
+    Les départements
+  </span>
+</div>
+
+<div class="max-w-3xl mx-auto pt-[55px]">
+  <a routerLink="" class="block w-1/5 font-bold text-xl-center shadow-lg shadow-slate-400 my-5 py-2 px-4 mx-3 text-sm text-white bg-slate-800 hover:bg-slate-600 rounded-lg" *ngIf="userToken.roles.includes('ADMIN')">
+    <ng-icon size="20" name="heroPlus" class="pt-1"></ng-icon>
+    Ajouter
+  </a>
+  <table class="shadow-lg shadow-slate-500 w-full">
+    <thead class="bg-slate-500 items-center justify-center">
+      <th class="px-4 py-2 text-slate-200">Nom</th>
+      <th class="px-4 py-2 text-slate-200">Code</th>
+      <th class="px-4 py-2 text-slate-200">Action</th>
+    </thead>
+    <tbody>
+      <tr class="px-4 py-2 text-center border-b border-slate-800 even:bg-slate-600 even:text-white odd:bg-sky-100" *ngFor="let department of departments">
+        <td>{{department.name}}</td>
+        <td>{{department.code | uppercase}}</td>
+        <td class="flex items-center justify-center">
+          <a routerLink="" class="shadow-lg shadow-slate-400 my-5 py-2 px-4 mx-3 text-sm text-white bg-slate-800 hover:bg-slate-600 rounded-lg">
+            <ng-icon size="20" name="heroEye" class="pt-1"></ng-icon>
+            Détails
+          </a>
+          <button class="text-red-600 hover:text-red-500" *ngIf="userToken.roles.includes('ADMIN')">
+            <ng-icon size="35" name="heroTrash" class="pt-1"></ng-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

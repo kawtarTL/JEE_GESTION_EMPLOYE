@@ -1,0 +1,61 @@
+<div class="md:border-l md:border-slate-500 pb-[100px]">
+
+  <div class="flex h-14 shadow-lg shadow-slate-400 bg-slate-500 items-center justify-center sticky top-[141px] md:top-[97px]">
+    <span class="text-2xl font-bold text-slate-800 cursor-default">
+      <ng-icon  name="heroUsersSolid" class="pt-1"></ng-icon>
+      Ajouter un employé
+    </span>
+  </div>
+
+  <div class="pt-7 gap-3 px-[25px] md:max-w-2xl mx-auto">
+<!--    <div class="shadow-lg shadow-slate-500 pb-4 border border-slate-500 text-center rounded-lg space-y-2 hover:outline-none hover:ring hover:ring-slate-800">-->
+<!--    </div>-->
+    <div class="items-center justify-center pt-5 px-[25px] md:px-10 mx-auto">
+      <form [formGroup]="employeeForm" (ngSubmit)="submit()" class="grid grid-cols-2 px-[75px]shadow-lg shadow-slate-400 gap-x-4 gap-y-5">
+        <label for="lastName" class="text-slate-500">
+          <span class="block after:content-['*'] after:text-red-600 after:ml-0.5">Prénom</span>
+          <input type="text" id="lastName" formControlName="lastName" class="peer block w-full rounded-lg">
+        </label>
+        <label for="firstName" class="text-slate-500">
+          <span class="block after:content-['*'] after:text-red-600 after:ml-0.5">Nom</span>
+          <input type="text" id="firstName" formControlName="firstName" class="peer block w-full rounded-lg">
+        </label>
+        <label for="email" class="text-slate-500">
+          <span class="block after:content-['*'] after:text-red-600 after:ml-0.5">Email</span>
+          <input type="text" id="email" formControlName="email" class="peer block w-full rounded-lg">
+        </label>
+        <label for="salary" class="text-slate-500">
+          <span class="block after:content-['*'] after:text-red-600 after:ml-0.5">Salaire</span>
+          <input type="number" id="salary" formControlName="salary" class="peer block w-full rounded-lg">
+        </label>
+        <label for="genre" class="text-slate-500">
+          <span class="block after:content-['*'] after:text-red-600 after:ml-0.5">Genre</span>
+          <select id="genre" formControlName="genre" class="peer block w-full rounded-lg">
+            <option ngValue="Mr">Homme</option>
+            <option ngValue="Mrs">Femme</option>
+          </select>
+        </label>
+        <label for="type" class="text-slate-500">
+          <span class="block after:content-['*'] after:text-red-600 after:ml-0.5">Type de contrat</span>
+          <select id="type" formControlName="type" class="peer block w-full rounded-lg">
+            <option ngValue="CDI">CDI</option>
+            <option ngValue="CDD">CDD</option>
+          </select>
+        </label>
+        <label for="startWork" class="text-slate-500">
+          <span class="block after:content-['*'] after:text-red-600 after:ml-0.5">Date de prise de service</span>
+          <input type="datetime-local" id="startWork" formControlName="startWork" class="peer block w-full rounded-lg">
+        </label>
+        <label for="birthDate" class="text-slate-500">
+          <span class="block after:content-['*'] after:text-red-600 after:ml-0.5">Date de naissance</span>
+          <input type="date" id="birthDate" formControlName="birthDate" class="peer block w-full rounded-lg">
+        </label>
+        <div class="flex justify-center items-center pt-10 col-span-2">
+          <button type="submit" class="hover:bg-slate-500 bg-slate-800 text-white px-6 py-4 rounded-lg disabled:bg-slate-500 disabled:hover:bg-slate-500 disabled:cursor-not-allowed disabled:text-slate-300" [disabled]="employeeForm.invalid">Ajouter</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+

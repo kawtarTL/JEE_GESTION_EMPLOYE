@@ -1,0 +1,23 @@
+<div class="flex bg-slate-400 w-full items-center justify-center shadow-lg shadow-slate-500 h-10 mx-auto">
+  <span class="flex text-xl font-bold text-slate-800">Connexion</span>
+</div>
+
+<div class="max-w-xs mx-auto pt-[120px]">
+  <span class="text-red-600 bg-red-300 rounded-lg p-4 pr-[40px] ml-1" *ngIf="errorMessage">
+      <ng-icon name="heroXCircle" size="25" class="pt-1.5"></ng-icon>
+    {{ errorMessage }}
+  </span>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="text-center mt-9 mx-auto space-y-5">
+    <label for="email" class="block space-x-2 text-slate-600">
+      <span>Email </span>
+      <input type="email" id="email" class="peer block w-full rounded-md shadow-lg shadow-slate-400 form-control" name="email" formControlName="email">
+      <span class="invisible text-red-600 peer-invalid:visible">adresse email incorrect</span>
+    </label>
+
+    <label for="password" class="block space-x-2 text-slate-600">
+      <span>Mot de passe </span>
+      <input type="password" id="password" class="block w-full rounded-md shadow-lg shadow-slate-400 form-control" name="password" formControlName="password">
+    </label>
+    <button type="submit" class="px-4 bg-slate-800 text-white hover:bg-slate-600 rounded-lg py-2 cursor-pointer disabled:bg-slate-500 disabled:hover:bg-slate-500 disabled:cursor-not-allowed disabled:text-slate-300" [disabled]="loginForm.invalid">Se connecter</button>
+  </form>
+</div>
