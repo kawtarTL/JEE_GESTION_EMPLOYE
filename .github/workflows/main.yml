@@ -17,5 +17,7 @@ jobs:
       
       - name: Build et publication sur dockerhub
         run: |
-              docker compose -f docker-compose.dev.yml build
-              docker compose -f docker-compose.dev.yml push
+              docker tag gesemp_backend ${{ secrets.DOCKER_HUB_USERNAME }}/gesemp_backend
+              docker tag gesemp_frontend ${{ secrets.DOCKER_HUB_USERNAME }}/gesemp_frontend
+              docker push ${{ secrets.DOCKER_HUB_USERNAME }}/gesemp_backend
+              docker push ${{ secrets.DOCKER_HUB_USERNAME }}/gesemp_frontend
