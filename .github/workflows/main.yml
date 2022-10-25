@@ -1,0 +1,21 @@
+name: CI on dockerhub
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Vérication accès au repo github
+        uses: actions/checkout@v2
+
+      - name: Connexion a dockerhub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      
+      - name: Build et publication sur dockerhub
+        run: |
+              docker compose -f docker-compose.dev.yml build
+              docker compose -f docker-compose.dev.yml push
