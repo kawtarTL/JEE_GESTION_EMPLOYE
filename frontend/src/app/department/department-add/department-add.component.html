@@ -1,0 +1,28 @@
+<div>
+  <div class="flex h-14 shadow-lg shadow-slate-400 bg-slate-500 items-center justify-center sticky top-[141px] md:top-[97px]">
+    <span class="text-2xl font-bold text-slate-800 cursor-default">
+      <ng-icon  name="heroUsersSolid" class="pt-1"></ng-icon>
+      Ajouter un département
+    </span>
+  </div>
+
+  <form [formGroup]="addDepForm" (ngSubmit)="onSubmit()" class="mt-[45px] max-w-3xl mx-auto">
+    <label for="name">
+      <span class="block">Nom</span>
+      <input type="text" id="name" formControlName="name" class="block w-full shadow-lg rounded-lg">
+    </label>
+    <label for="name" class="my-4">
+      <span class="block">Code</span>
+      <input type="text" id="code" formControlName="code" class="block w-full shadow-lg rounded-lg">
+    </label>
+    <label for="name">
+      <span class="block">Description</span>
+      <textarea id="" formControlName="description" class="block w-full shadow-lg rounded-lg"></textarea>
+    </label>
+    <div class="flex justify-center items-center pt-10 col-span-2">
+      <button type="submit" class="hover:bg-slate-500 bg-slate-800 text-white px-6 py-4 rounded-lg disabled:bg-slate-500 disabled:hover:bg-slate-500 disabled:cursor-not-allowed disabled:text-slate-300" [disabled]="addDepForm.invalid">Ajouter</button>
+    </div>
+  </form>
+</div>
+
+

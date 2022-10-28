@@ -3,12 +3,11 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor, HTTP_INTERCEPTORS, HttpHeaders, HttpErrorResponse
+  HttpInterceptor, HTTP_INTERCEPTORS, HttpHeaders
 } from '@angular/common/http';
-import {BehaviorSubject, catchError, filter, Observable, of, switchMap, take, throwError} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 import {TokenService} from "../services/token.service";
 import {AuthService} from "../services/auth.service";
-import {Token} from "../models/Token";
 
 @Injectable()
 export class RequestInterceptor implements HttpInterceptor {
@@ -37,7 +36,6 @@ export class RequestInterceptor implements HttpInterceptor {
         // }));
 
       }
-      else
       return next.handle(request);
   }
 

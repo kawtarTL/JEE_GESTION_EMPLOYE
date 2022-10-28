@@ -25,13 +25,15 @@ import { WelcomeComponent } from './employee/welcome/welcome.component';
 import { DepartmentListComponent } from './department/department-list/department-list.component';
 import {HasRoleGuardService} from "./services/has-role-guard.service";
 import {RequestInterceptorProvider} from "./interceptors/request.interceptor";
+import { DepartmentAddComponent } from './department/department-add/department-add.component';
 
 const routes:Routes = [
-  {path: 'employees', component: EmployeeListComponent},
+  {path: 'employees', canActivate:[AuthGuardService],component: EmployeeListComponent},
   {path: 'employees/add', canActivate:[AuthGuardService], component: EmployeeAddComponent},
   {path: 'employees/:id', canActivate:[AuthGuardService], component: EmployeeSingleComponent},
   {path: 'employees/edit/:id', canActivate:[AuthGuardService], component: EmployeeEditComponent},
   {path: 'departments', canActivate:[HasRoleGuardService], component: DepartmentListComponent},
+  {path: 'departments/add', canActivate:[AuthGuardService], component: DepartmentAddComponent},
   {path: 'signin', component:SigninComponent},
   {path: '', redirectTo:'employees', pathMatch:"full"},
   {path: '**', redirectTo:'employees'}
@@ -47,6 +49,7 @@ const routes:Routes = [
     SigninComponent,
     WelcomeComponent,
     DepartmentListComponent,
+    DepartmentAddComponent,
   ],
   imports: [
     BrowserModule,
