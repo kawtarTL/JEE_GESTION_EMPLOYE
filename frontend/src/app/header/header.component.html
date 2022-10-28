@@ -3,11 +3,11 @@
     <a routerLink="" class="text-2xl font-bold italic text-slate-300 pt-2.5">
       <span class="hover:text-slate-50">GESEMP</span>
     </a>
-    <div class="sr-only md:pt-2 md:not-sr-only" *ngIf="authService.userToken">
+    <div class="sr-only md:pt-2 md:not-sr-only" *ngIf="isLogged">
       <a *ngFor="let nav of navigation" [routerLink]="nav.url" routerLinkActive="animate-pulse text-yellow-500 delay-200" class="rounded-lg px-3 py-2 text-slate-200 font-medium hover:text-yellow-500" >{{ nav.title }}</a>
     </div>
-    <div class="sr-only md:pt-2 md:not-sr-only" *ngIf="authService.userToken">
-      <a routerLink="employees" routerLinkActive="animate-pulse text-yellow-500 delay-200" class="rounded-lg px-3 py-2 text-slate-200 font-medium hover:text-yellow-500" *ngIf="authService.userToken && userToken.roles.includes('ADMIN')">Employés</a>
+    <div class="sr-only md:pt-2 md:not-sr-only" *ngIf="userToken.roles.includes('ADMIN')">
+      <a routerLink="employees" routerLinkActive="animate-pulse text-yellow-500 delay-200" class="rounded-lg px-3 py-2 text-slate-200 font-medium hover:text-yellow-500" *ngIf="isLogged">Employés</a>
     </div>
     <span class="md:sr-only hover:text-white text-slate-300 cursor-pointer">
       <ng-icon strokeWidth="3" size="30" name="heroBars3" class="pt-0.5"></ng-icon>
@@ -23,11 +23,11 @@
 <!--      <ng-icon strokeWidth="3" size="18" name="heroUserPlus" class="pt-0.5"></ng-icon>-->
 <!--      Inscription-->
 <!--    </a>-->
-    <a routerLink="signin" class="sr-only md:not-sr-only hover:text-yellow-500 text-slate-300 font-medium md:px-2 md:space-x-2" *ngIf="!authService.isLogged">
+    <a routerLink="signin" class="sr-only md:not-sr-only hover:text-yellow-500 text-slate-300 font-medium md:px-2 md:space-x-2" *ngIf="!isLogged">
       <ng-icon strokeWidth="3" size="18" name="heroArrowRightOnRectangle" class="pt-0.5"></ng-icon>
       Connexion
     </a>
-    <button (click)="lougout()" class="sr-only md:not-sr-only hover:text-yellow-500 text-slate-300 font-medium md:px-2 md:space-x-2" *ngIf="authService.isLogged">
+    <button (click)="lougout()" class="sr-only md:not-sr-only hover:text-yellow-500 text-slate-300 font-medium md:px-2 md:space-x-2" *ngIf="isLogged">
       <ng-icon strokeWidth="3" size="18" name="heroArrowRightOnRectangle" class="pt-0.5"></ng-icon>
       Me déconnecter
     </button>

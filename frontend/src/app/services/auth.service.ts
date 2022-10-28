@@ -20,8 +20,18 @@ export class AuthService {
     password:''
   };
 
-  isLogged:Subject<boolean>=new Subject<boolean>();
-  userToken: Subject<UserToken>=new Subject<UserToken>();
+  userT:UserToken={
+    roles:[],
+    subject:'',
+    issuer:'',
+    audience:[],
+    expiration_date:new Date()
+  }
+  private token:string= localStorage.getItem("access_token") as string;
+  public isLogged:boolean=!!this.token;
+  public isLogged_= new BehaviorSubject<boolean>(this.isLogged);
+  public userToken= this.isLogged? this.getUserFromToken(this.token) : this.userT ;
+  public userToken_= new BehaviorSubject(this.userToken);
 
   constructor(private router:Router,
               private http:HttpClient,
@@ -34,9 +44,9 @@ export class AuthService {
       })
     }).pipe(
       tap((response:Token)=>{
-        this.isLogged.next(true);
         this.tokenService.saveToken(response);
-        this.userToken.next(this.getUserFromToken(response.access_token));
+        this.userToken_.next(this.getUserFromToken(response.access_token));
+        this.isLogged_.next(true);
         let user=this.getUserFromToken(response.access_token);
         localStorage.setItem('roles', user.roles.toString());
         if(user.roles.includes('ADMIN'))
@@ -51,14 +61,9 @@ export class AuthService {
     return JSON.parse(atob(token.split(".")[1])) as UserToken;
   }
 
-  isConnected():boolean{
-    const token:string=this.tokenService.getToken();
-    return !token;
-  }
-
   destroySession(){
     this.tokenService.clearToken();
-    this.isLogged.next(false);
+    this.isLogged_.next(false);
     this.router.navigate(['signin']);
   }
 

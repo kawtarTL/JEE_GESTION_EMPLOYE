@@ -18,23 +18,17 @@ export class DepartmentListComponent implements OnInit, OnDestroy {
     code:'',
     description:''
   };
-  userToken:UserToken= {
-    audience: [],
-    expiration_date: new Date(),
-    issuer: '',
-    roles: [],
-    subject: ''
-  }
+  userToken:UserToken=this.authService.getUserFromToken(localStorage.getItem("access_token") as string);
+  userTokenSubscription= new Subscription();
   subscriptionDepartments:Subscription = new Subscription();
-  userTokenSubscription:Subscription=new Subscription();
 
   constructor(private departmentService:DepartmentService,
               public authService:AuthService) { }
 
   ngOnInit(): void {
     this.getDepartments();
-    this.authService.userToken.subscribe(
-      (u)=>{this.userToken=u}
+    this.userTokenSubscription= this.authService.userToken_.subscribe(
+      userToken => this.userToken= userToken
     );
   }
 
