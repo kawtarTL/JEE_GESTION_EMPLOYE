@@ -24,7 +24,13 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     private final AuthenticationManager authenticationManager;
 
-    //Utilisateur essaie de se connaecter
+    public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
+		super();
+		this.authenticationManager = authenticationManager;
+	}
+
+
+	//Utilisateur essaie de se connaecter
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         Authentication authentication = null;

@@ -22,7 +22,12 @@ public class EmployeeController {
 
     private final EmployeeServiceImpl employeeService;
 
-    @GetMapping("")
+    public EmployeeController(EmployeeServiceImpl employeeService) {
+		super();
+		this.employeeService = employeeService;
+	}
+
+	@GetMapping("")
     @PostAuthorize("hasAuthority('ADMIN')")
     public List<Employee> getAllEmployees(){
         return employeeService.getEmployees();
@@ -112,10 +117,35 @@ public class EmployeeController {
 class EmployeeRole {
     private String employeeName;
     private String roleName;
+	public String getEmployeeName() {
+		return employeeName;
+	}
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
+	public String getRoleName() {
+		return roleName;
+	}
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
 }
 
 @Data
 class EmployeeDepartment {
     private String employeeName;
     private String departmentName;
+	public String getEmployeeName() {
+		return employeeName;
+	}
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
+	}
+	public String getDepartmentName() {
+		return departmentName;
+	}
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
+	}
+    
 }

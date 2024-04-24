@@ -28,7 +28,12 @@ public class AppRoleServiceImpl implements AppRoleService {
         return appRoleRepository.findById(id);
     }
 
-    @Override
+    public AppRoleServiceImpl(AppRoleRepository appRoleRepository) {
+		super();
+		this.appRoleRepository = appRoleRepository;
+	}
+
+	@Override
     public AppRole AddRole(AppRole appRole) {
         AppRole appRole1=null;
         if(appRoleRepository.getAppRoleByName(appRole.getName()) != null) {

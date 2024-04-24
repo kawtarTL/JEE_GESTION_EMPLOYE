@@ -28,4 +28,10 @@ public class EmployeeDetailsService implements UserDetailsService {
         authorities.add(new SimpleGrantedAuthority("USER"));
         return new User(employee.getEmail(), employee.getPassword(), authorities);
     }
+
+	public EmployeeDetailsService(EmployeeServiceImpl employeeService) {
+		super();
+		this.employeeService = employeeService;
+	}
+    
 }

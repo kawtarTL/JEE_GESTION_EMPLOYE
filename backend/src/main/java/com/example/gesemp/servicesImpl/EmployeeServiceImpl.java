@@ -24,7 +24,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final DepartmentRepository departmentRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @Override
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, AppRoleRepository appRoleRepository,
+			DepartmentRepository departmentRepository, PasswordEncoder passwordEncoder) {
+		super();
+		this.employeeRepository = employeeRepository;
+		this.appRoleRepository = appRoleRepository;
+		this.departmentRepository = departmentRepository;
+		this.passwordEncoder = passwordEncoder;
+	}
+
+	@Override
     public List<Employee> getEmployees() {
         return employeeRepository.findAll();
     }

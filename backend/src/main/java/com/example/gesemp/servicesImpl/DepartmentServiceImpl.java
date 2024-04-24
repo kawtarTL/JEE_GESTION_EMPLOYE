@@ -22,7 +22,12 @@ public class DepartmentServiceImpl implements DepartmentService {
         return departmentRepository.findAll();
     }
 
-    @Override
+    public DepartmentServiceImpl(DepartmentRepository departmentRepository) {
+		super();
+		this.departmentRepository = departmentRepository;
+	}
+
+	@Override
     public Optional<Department> getDepartment(Long id) {
         return departmentRepository.findById(id);
     }

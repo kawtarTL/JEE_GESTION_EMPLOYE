@@ -16,7 +16,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @AllArgsConstructor
 public class SecurityConfig {
-//    @Bean
+public SecurityConfig(EmployeeServiceImpl employeeService) {
+		super();
+		this.employeeService = employeeService;
+	}
+
+	//    @Bean
 //    public EmbeddedLdapServerContextSourceFactoryBean contextSourceFactoryBean() {
 //        EmbeddedLdapServerContextSourceFactoryBean contextSourceFactoryBean =
 //                EmbeddedLdapServerContextSourceFactoryBean.fromEmbeddedLdapServer();

@@ -22,7 +22,135 @@ public class Employee {
 
     private String firstName;
     private String lastName;
-    private double salary;
+    public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Employee(Long id, String firstName, String lastName, double salary, String email, String password,
+			Genre genre, Type type, String imgProfil, Date birthDate, Date startWork, Collection<AppRole> roles,
+			Department department) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.salary = salary;
+		this.email = email;
+		this.password = password;
+		this.genre = genre;
+		this.type = type;
+		this.imgProfil = imgProfil;
+		this.birthDate = birthDate;
+		this.startWork = startWork;
+		this.roles = roles;
+		this.department = department;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Genre getGenre() {
+		return genre;
+	}
+
+	public void setGenre(Genre genre) {
+		this.genre = genre;
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
+	public String getImgProfil() {
+		return imgProfil;
+	}
+
+	public void setImgProfil(String imgProfil) {
+		this.imgProfil = imgProfil;
+	}
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public Date getStartWork() {
+		return startWork;
+	}
+
+	public void setStartWork(Date startWork) {
+		this.startWork = startWork;
+	}
+
+	public Collection<AppRole> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Collection<AppRole> roles) {
+		this.roles = roles;
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
+	private double salary;
     private String email;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

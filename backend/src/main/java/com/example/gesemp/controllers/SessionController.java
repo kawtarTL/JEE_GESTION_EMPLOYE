@@ -99,4 +99,9 @@ public class SessionController {
             new ObjectMapper().writeValue(response.getOutputStream(), error);
         }
     }
+
+	public SessionController(EmployeeServiceImpl employeeService) {
+		super();
+		this.employeeService = employeeService;
+	}
 }

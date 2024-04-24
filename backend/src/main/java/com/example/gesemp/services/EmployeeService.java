@@ -1,11 +1,12 @@
 package com.example.gesemp.services;
 
-
 import com.example.gesemp.models.Employee;
+
 import java.util.List;
 import java.util.Optional;
 
 public interface EmployeeService {
+
     List<Employee> getEmployees();
     Employee getEmployee(Long id);
     Employee addEmployee(Employee employee);
